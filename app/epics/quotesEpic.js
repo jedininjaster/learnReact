@@ -1,15 +1,28 @@
 import {
   REQUEST_QUOTE,
-  QUOTE_RECEIVED
-} from '../constants/quotes';
+  QUOTE_RECEIVED,
+  QUOTE_REQUEST_ERROR
+} from '../constants/quotesConstants';
+
+import rxjs, {Observable} from 'rxjs';
 
 const quotesEpic = action$ => {
   console.log(action$);
-
   return action$
     .ofType(REQUEST_QUOTE)
-    .delay(2000)
-    .mapTo({type: QUOTE_RECEIVED, quote: 'rs quote here'});
+    .mergeMap(action =>
+      Observable
+        .ajax
+        .getJSON('http://www.anapioficeandfire.com/api', {
+          'Content-Type': 'application/json'
+        })
+        .map(res => {
+          return {type: QUOTE_RECEIVED, quote: res[0]}
+        })
+        .catch(error => {
+          return {type: QUOTE_REQUEST_ERROR, error}
+        })
+    )
 };
 
 export default quotesEpic;

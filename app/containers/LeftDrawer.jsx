@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { toggleLeftNav } from '../actions/navigation';
+import { toggleLeftNav } from '../actions/navigationActions';
 
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';

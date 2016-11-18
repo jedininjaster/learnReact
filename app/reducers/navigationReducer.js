@@ -1,6 +1,6 @@
 import {
   TOGGLE_LEFT_DRAWER
-} from '../constants/navigation';
+} from '../constants/navigationConstants';
 
 const initialState = {
   leftDrawerOpen: false

@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {Router, hashHistory} from 'react-router';
 
 import {connect} from 'react-redux';
-import {toggleLeftNav} from './actions/navigation';
+import {toggleLeftNav} from './actions/navigationActions';
 
 import './styles/main.scss';
 
 import AppBar from 'material-ui/AppBar';
-import LeftDrawer from './navigation/LeftDrawer.jsx';
+import LeftDrawer from './containers/LeftDrawer.jsx';
 
-import Home from './components/home.jsx';
+import Home from './containers/Home.jsx';
 
 const routes = [
   {
@@ -27,7 +27,7 @@ class App extends Component {
           onLeftIconButtonTouchTap={this.props.onLeftIconButtonTouchTap}
         />
         <LeftDrawer />
-        {/*<Router history={hashHistory} routes={routes} />*/}
+        <Router history={hashHistory} routes={routes} />
       </div>
     )
   }

@@ -1,9 +1,10 @@
 import {
 REQUEST_QUOTE,
 QUOTE_RECEIVED
-} from '../constants/quotes';
+} from '../constants/quotesConstants';
 
 export const requestQuote = () => {
+  console.log('action');
   return {
     type: REQUEST_QUOTE
   }
