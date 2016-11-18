@@ -1,0 +1,2 @@
+export const REQUEST_QUOTE = 'REQUEST_QUOTE';
+export const QUOTE_RECEIVED = 'QUOTE_RECEIVED';
