@@ -7,23 +7,15 @@ const initialState = {
 };
 
 const toggleLeftDrawer = (state) => {
-  console.log('toggleLeftDrawer');
-  console.log(state);
   let toReturn = {
     ...state,
     leftDrawerOpen: !state.leftDrawerOpen
   };
-  console.log(toReturn);
   return toReturn
 };
 
 export default (state = initialState, action) => {
-
-  console.log(state);
-  console.log(action);
-
   let toReturn;
-
   const { type } = action;
   switch (type) {
     case TOGGLE_LEFT_DRAWER:
@@ -32,9 +24,5 @@ export default (state = initialState, action) => {
     default:
       toReturn = state;
   }
-
-  console.log('toReturn');
-  console.log(toReturn);
-
   return toReturn;
 }

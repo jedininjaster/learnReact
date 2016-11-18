@@ -39,7 +39,6 @@ function mapState(state) {
 
 const mapDispatch = (dispatch) => ({
   onLeftIconButtonTouchTap() {
-    console.log('here');
     dispatch(toggleLeftNav())
   }
 });

@@ -1,15 +1,39 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class Home extends Component{
-  render(){
-    return <RaisedButton
-    onTouchTap={this.onTouchTap}>
-    It works!
-    </RaisedButton>
+import { requestQuote } from '../actions/quotes';
+
+class Home extends Component {
+  render() {
+    return <div>
+      <RaisedButton
+        onTouchTap={this.onTouchTap}>
+        What would Ron Swanson say?
+      </RaisedButton>
+      {this.renderQuotes()}
+    </div>
+
   }
 
-  onTouchTap(){
-    alert('touch tap');
+  renderQuotes(){
+    return this.props.map(quote => <div>{quote}</div>);
+  }
+
+  onTouchTap() {
+    this.props.requestQuote();
   }
 }
+
+const mapState = (state) => {
+  return {
+    quotes: state.quotes
+  };
+};
+
+const mapDispatch = dispatch => ({
+  requestQuote(){
+    dispatch(requestQuote());
+  }
+});
+
+export default connect(mapState, mapDispatch)(Home);
