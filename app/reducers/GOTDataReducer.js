@@ -14,14 +14,16 @@ export default (state = initialState, action) => {
     case REQUEST_DATA:
       const toReturn = {
         data: state.data,
-        status: 'requested'
+        status: 'requested',
+        collection: action.collection
       };
       return toReturn;
       break;
     case DATA_RECEIVED:
       return {
         data: action.data,
-        status: 'received'
+        status: 'received',
+        collection: action.collection
       };
       break;
     case REQUEST_ERROR:

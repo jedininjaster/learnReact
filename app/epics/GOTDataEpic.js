@@ -14,10 +14,10 @@ const GOTDataEpic = action$ => {
         .ajax
         .getJSON(action.url)
         .map(data => {
-          return {type: DATA_RECEIVED, data}
+          return {type: DATA_RECEIVED, data, collection: action.collection}
         })
         .catch(error => {
-          return {type: REQUEST_ERROR, error}
+          return {type: REQUEST_ERROR, error, collection: action.collection}
         })
     )
 };

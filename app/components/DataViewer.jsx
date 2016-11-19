@@ -10,28 +10,26 @@ export default class DataViewer extends Component {
   }
 
   render() {
-    console.log(this.props);
     if(!this.props.data){
       return <div>loading</div>
     }
-    return <div>
+    return <List>
       {this.renderData(this.props.data)}
-    </div>;
+    </List>;
   }
 
   renderData(data) {
+    console.log(this.props);
     if (Array.isArray(data)) {
-      return this.renderArray(data);
+      return this.renderArray(data, this.props.collection);
     } else {
-      return this.renderObject(data);
+      return this.renderObject(data, this.props.collection);
     }
   }
 
   renderArray(arr, key) {
-    return <List style={{marginLeft: 30}}>
-      <Subheader>{key}</Subheader>
-      {arr.map(item => this.renderItem(item, key))}
-    </List>;
+    const nestedItems = arr.map(item => this.renderItem(item, key));
+    return <ListItem key={key} primaryText={key} nestedItems={nestedItems} />
   }
 
   renderObject(obj) {
@@ -43,13 +41,13 @@ export default class DataViewer extends Component {
   renderItem(value, key) {
     if (this.stringIsUrl(value)) {
       return <ListItem key={key + value} onClick={() => {
-        this.props.onUrlClick(value)
+        this.props.onUrlClick(value, key)
       }}>{key}: {value}</ListItem>;
     } else if (Array.isArray(value)) {
       return this.renderArray(value, key);
     } else if (typeof value === 'object') {
       return <ListItem key={value.url} onClick={() => {
-        this.props.onUrlClick(value.url)
+        this.props.onUrlClick(value.url, key)
       }}>{value.name}: {value.url}</ListItem>;
     } else {
       return <ListItem key={key}>{key}: {JSON.stringify(value)}</ListItem>;
