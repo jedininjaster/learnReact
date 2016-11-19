@@ -4,7 +4,6 @@ QUOTE_RECEIVED
 } from '../constants/quotesConstants';
 
 export const requestQuote = () => {
-  console.log('action');
   return {
     type: REQUEST_QUOTE
   }

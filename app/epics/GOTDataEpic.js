@@ -12,7 +12,7 @@ const GOTDataEpic = action$ => {
     .mergeMap(action =>
       Observable
         .ajax
-        .getJSON('http://www.anapioficeandfire.com/api')
+        .getJSON(action.url)
         .map(data => {
           return {type: DATA_RECEIVED, data}
         })

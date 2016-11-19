@@ -7,7 +7,6 @@ import {
 import rxjs, {Observable} from 'rxjs';
 
 const quotesEpic = action$ => {
-  console.log(action$);
   return action$
     .ofType(REQUEST_QUOTE)
     .mergeMap(action =>

@@ -5,7 +5,6 @@ import {
 import 'rxjs';
 
 const navigationEpic = action$ => {
-  console.log(action$);
   return action$
     .ofType(TOGGLE_LEFT_DRAWER)
     .delay(1000)

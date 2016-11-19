@@ -13,23 +13,17 @@ class Home extends Component {
   }
 
   render() {
-    return <div>
-      {JSON.stringify(this.props.GOTData)}
-    </div>;
-    {/*return <DataViewer data={this.props.data} onUrlClick={this.onUrlClick} />*/}
+    return <DataViewer data={this.props.data} onUrlClick={this.onUrlClick} />;
   }
 
   onUrlClick(url) {
-    console.log(url);
     this.props.requestData(url);
   }
 }
 
 const mapState = (state) => {
   console.log(state);
-  return {
-    GOTData: state.GOTData
-  };
+  return { data: state.GOTData.data };
 };
 
 const mapDispatch = dispatch => ({
